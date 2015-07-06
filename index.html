@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WorkFlow Dashboard</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <div id="chat">
+
+    </div>
+</body>
+<script type="text/javascript">
+    ws = new WebSocket("ws://localhost:9898/ws");
+    ws.onmessage = function(ev) {
+        data = JSON.parse(ev.data);
+        console.log(ev.data);
+        $("#chat").append("<p>" + data.text + "</p>");
+    }
+</script>
+</html>
