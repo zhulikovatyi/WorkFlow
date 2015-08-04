@@ -1,6 +1,7 @@
 import tornado.ioloop
 import tornado.web
 import socket_handler
+import api_handler
 
 from tornado import options, websocket
 
@@ -40,6 +41,7 @@ def main():
             (r"/", IndexHandler),
             (r"/ws", SocketHandler),
             (r"/ws/timer", socket_handler.WorkTimerHandler),
+            (r"/api/task/([^/]*)", api_handler.TaskHandler)
         ],
         debug=opts.debug
     )
